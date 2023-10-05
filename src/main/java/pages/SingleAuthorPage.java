@@ -3,7 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,8 @@ public class SingleAuthorPage {
     }
 
     public void createMap() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[style*='overflow']")));
         labels = driver.findElements(By.cssSelector("div[class*='sc_skills_label']"));
         percentages = driver.findElements(By.cssSelector("div[class*='sc_skills_total']"));
         for (int i = 0; i < labels.size(); i++) {

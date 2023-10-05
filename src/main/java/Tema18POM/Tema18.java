@@ -21,8 +21,7 @@ public class Tema18 extends BaseTest {
         ShippingAddressPage shippingAddressPage = new ShippingAddressPage(driver);
         shippingAddressPage.selectByIndex(41);
         assertEquals(shippingAddressPage.getSelectedOption(shippingAddressPage.country), "Canada");
-        // byVisibleText pentru ca nu exista value
-        shippingAddressPage.selectByVisibleText("Newfoundland and Labrador");
+        shippingAddressPage.selectByValue("NL");
         assertEquals(shippingAddressPage.getSelectedOption(shippingAddressPage.province), "Newfoundland and Labrador");
     }
 }

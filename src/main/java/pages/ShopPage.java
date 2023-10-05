@@ -3,7 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class ShopPage {
 
@@ -15,8 +18,35 @@ public class ShopPage {
 
     //locatori
     public By orderDropdown = By.name("orderby");
+    public By priceSliderInitalPosition = By.xpath("//span[@style='left: 0%;']");
+    public By priceSliderFinalPosition = By.xpath("//span[@style='left: 100%;']");
+    public By priceSliderFinalMoved = By.xpath("//span[@style='left: 62.5%;']");
+    public By cookbooks = By.linkText("Cookbooks");
+    public List<WebElement> books;
+    public List<WebElement> saleBooks;
+
 
     //metode
+    public void dragAndDropSlider(By locator, int x,int y) {
+        WebElement element = driver.findElement(locator);
+        Actions action = new Actions(driver);
+        action.moveToElement(element).clickAndHold(element).moveByOffset(x,y).release().perform();
+        //action.dragAndDropBy(element, x, y).perform();
+        //action.dragAndDrop(element, element).perform();
+    }
+    public void dragAndDropElement(By locator1,By locator2) {
+        WebElement element1 = driver.findElement(locator1);
+        WebElement element2 = driver.findElement(locator2);
+
+        Actions  action = new Actions(driver);
+        //action.dragAndDrop(element1, element2).perform();
+        action.
+                moveToElement(element1).
+                clickAndHold(element1).
+                moveToElement(element2).
+                release().perform();
+    }
+
     public void selectByValue(String value) {
         WebElement dropdown =  driver.findElement(orderDropdown);
         Select select = new Select(dropdown);
@@ -51,5 +81,12 @@ public class ShopPage {
         return select.getFirstSelectedOption().getText();
     }
 
+    public void getBooks() {
+        books = driver.findElements(By.cssSelector(".post_featured"));
+    }
+
+    public void getSaleBooks() {
+        saleBooks = driver.findElements(By.cssSelector(".onsale"));
+    }
 
 }

@@ -20,10 +20,10 @@ public class ShippingAddressPage {
         select.selectByIndex(index);
     }
 
-    public void selectByVisibleText(String text) {
+    public void selectByValue(String value) {
         WebElement dropdown =  driver.findElement(province);
         Select select = new Select(dropdown);
-        select.selectByVisibleText(text);
+        select.selectByValue(value);
     }
 
     public String getSelectedOption(By element) {
