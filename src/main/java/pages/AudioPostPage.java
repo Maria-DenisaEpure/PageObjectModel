@@ -11,7 +11,7 @@ public class AudioPostPage {
     public AudioPostPage (WebDriver driver) {
         this.driver = driver;	}
 
-    public By playerSlider = By.cssSelector("span[class='mejs-time-handle']");
+    public By playerSlider = By.cssSelector("span[class='mejs-time-current']");
     public By playButton = By.cssSelector("div[class*='mejs-play']");
     public By volumeSlider = By.cssSelector("div[class*='volume-current']");
 
